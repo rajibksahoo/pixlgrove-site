@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio — Pixlgrove</title>
+  <meta name="description" content="Web design and development projects by Pixlgrove studio."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><rect x='8' y='8' width='28' height='28' rx='5' fill='%231D9E75'/><rect x='44' y='8' width='28' height='28' rx='5' fill='%231D9E75'/><rect x='80' y='8' width='28' height='28' rx='5' fill='%231D9E75'/><rect x='8' y='44' width='28' height='28' rx='5' fill='%231D9E75'/><rect x='44' y='44' width='28' height='28' rx='5' fill='%231D9E75'/><rect x='80' y='44' width='28' height='28' rx='14' fill='%235DCAA5'/><rect x='8' y='80' width='28' height='28' rx='14' fill='%235DCAA5'/><circle cx='58' cy='94' r='14' fill='%239FE1CB'/></svg>"/>
+  <style>
+    .page-hero {
+      padding: 80px 40px 64px;
+      background: var(--bark5);
+      border-bottom: 1px solid var(--bark4);
+    }
+
+    .page-hero h1 { margin-bottom: 16px; }
+    .page-hero p { font-size: 18px; font-weight: 300; max-width: 520px; }
+
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 36px;
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: 20px;
+      border: 1.5px solid var(--bark4);
+      background: white;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--bark2);
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      border-color: var(--grove);
+      color: var(--grove);
+      background: #E1F5EE;
+    }
+
+    .portfolio-full {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-top: 56px;
+    }
+
+    .work-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--bark5);
+      background: white;
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .work-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.07);
+    }
+
+    .work-thumb {
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .work-thumb-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: .08em;
+      color: var(--bark3);
+      background: rgba(255,255,255,0.85);
+      padding: 8px 16px;
+      border-radius: 20px;
+    }
+
+    .work-body { padding: 28px; }
+    .work-body .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+    .work-body h3 { margin-bottom: 8px; font-size: 22px; }
+    .work-body p { font-size: 15px; margin-bottom: 20px; }
+
+    .work-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--grove);
+      text-decoration: none;
+      transition: gap .2s;
+    }
+
+    .work-link:hover { gap: 10px; }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 80px 40px;
+      border: 2px dashed var(--bark4);
+      border-radius: var(--radius-lg);
+    }
+
+    .empty-state h3 { margin-bottom: 12px; color: var(--bark3); }
+    .empty-state p { color: var(--bark3); margin-bottom: 28px; font-size: 15px; }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .process-step {
+      padding: 28px 24px;
+      border-radius: var(--radius-lg);
+      background: white;
+      border: 1px solid var(--bark5);
+    }
+
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--dew);
+      display: block;
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+
+    .process-step h3 { margin-bottom: 8px; }
+    .process-step p { font-size: 14px; }
+
+    @media (max-width: 900px) {
+      .page-hero { padding: 60px 20px 48px; }
+      .portfolio-full { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .process-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="page">
+<script src="layout.js"></script>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Our work</span>
+    <h1>Built with care.<br>Designed to grow.</h1>
+    <p>Every project is different. Here's what we've been working on.</p>
+    <div class="filter-bar">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Websites</button>
+      <button class="filter-btn">E-commerce</button>
+      <button class="filter-btn">Landing pages</button>
+      <button class="filter-btn">Branding</button>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="portfolio-full">
+      <!-- Placeholder cards — replace with real projects -->
+      <div class="work-card fade-up">
+        <div class="work-thumb" style="background: linear-gradient(135deg,#E1F5EE 0%,#9FE1CB 100%);">
+          <span class="work-thumb-label">Project coming soon</span>
+        </div>
+        <div class="work-body">
+          <div class="tags">
+            <span class="tag tag-grove">Website</span>
+            <span class="tag">Branding</span>
+          </div>
+          <h3>Your project here</h3>
+          <p>This is where your first client's project will live. Be the first to work with Pixlgrove.</p>
+          <a href="contact.html" class="work-link">Start your project →</a>
+        </div>
+      </div>
+
+      <div class="work-card fade-up">
+        <div class="work-thumb" style="background: linear-gradient(135deg,#F1EFE8 0%,#D3D1C7 100%);">
+          <span class="work-thumb-label">Project coming soon</span>
+        </div>
+        <div class="work-body">
+          <div class="tags">
+            <span class="tag">E-commerce</span>
+            <span class="tag tag-grove">Development</span>
+          </div>
+          <h3>Your project here</h3>
+          <p>Early adopters get priority slots and introductory pricing. Get in touch today.</p>
+          <a href="contact.html" class="work-link">Get early access →</a>
+        </div>
+      </div>
+
+      <div class="empty-state fade-up">
+        <h3>More projects on the way</h3>
+        <p>We're actively taking on new clients. Your project could be featured right here.</p>
+        <a href="contact.html" class="btn btn-primary">Start a project with us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section" style="background:var(--bark5); border-top:1px solid var(--bark4);">
+  <div class="container">
+    <span class="eyebrow">How we work</span>
+    <h2>Simple, clear process.</h2>
+    <div class="process-grid">
+      <div class="process-step fade-up">
+        <span class="step-num">01</span>
+        <h3>Discovery</h3>
+        <p>We learn about your business, your goals, and what your customers need.</p>
+      </div>
+      <div class="process-step fade-up">
+        <span class="step-num">02</span>
+        <h3>Design</h3>
+        <p>We design a site that's unmistakably yours — on brand and built to convert.</p>
+      </div>
+      <div class="process-step fade-up">
+        <span class="step-num">03</span>
+        <h3>Build</h3>
+        <p>Clean, fast, hand-crafted code. Mobile-first and accessible from day one.</p>
+      </div>
+      <div class="process-step fade-up">
+        <span class="step-num">04</span>
+        <h3>Launch</h3>
+        <p>We handle deployment, testing, and make sure everything goes live smoothly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

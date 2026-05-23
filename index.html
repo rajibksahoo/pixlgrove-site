@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pixlgrove — Web Design &amp; Development</title>
+  <meta name="description" content="Pixel-perfect websites built to grow your business. Web design and development studio serving clients worldwide."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><rect x='8' y='8' width='28' height='28' rx='5' fill='%231D9E75'/><rect x='44' y='8' width='28' height='28' rx='5' fill='%231D9E75'/><rect x='80' y='8' width='28' height='28' rx='5' fill='%231D9E75'/><rect x='8' y='44' width='28' height='28' rx='5' fill='%231D9E75'/><rect x='44' y='44' width='28' height='28' rx='5' fill='%231D9E75'/><rect x='80' y='44' width='28' height='28' rx='14' fill='%235DCAA5'/><rect x='8' y='80' width='28' height='28' rx='14' fill='%235DCAA5'/><circle cx='58' cy='94' r='14' fill='%239FE1CB'/></svg>"/>
+  <style>
+    /* HERO */
+    .hero {
+      min-height: calc(100vh - var(--nav-h));
+      display: flex;
+      align-items: center;
+      padding: 80px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--bark5) 1px, transparent 1px),
+        linear-gradient(90deg, var(--bark5) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.5;
+    }
+
+    .hero-grid::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, white 100%);
+    }
+
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hero-content h1 { margin-bottom: 24px; }
+    .hero-content h1 em {
+      font-style: normal;
+      color: var(--grove);
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      color: var(--bark2);
+      max-width: 440px;
+      margin-bottom: 36px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .hero-mark {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-mark svg {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      animation: floatMark 6s ease-in-out infinite;
+    }
+
+    @keyframes floatMark {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* LOGOS BAR */
+    .logos-bar {
+      background: var(--bark5);
+      padding: 28px 40px;
+      border-top: 1px solid var(--bark4);
+      border-bottom: 1px solid var(--bark4);
+    }
+
+    .logos-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .logos-inner p {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--bark3);
+      flex-shrink: 0;
+      margin-right: 8px;
+    }
+
+    .logo-pill {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--bark2);
+      padding: 6px 14px;
+      background: white;
+      border: 1px solid var(--bark4);
+      border-radius: 20px;
+    }
+
+    /* SERVICES PREVIEW */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .service-card {
+      padding: 32px;
+      border: 1px solid var(--bark5);
+      border-radius: var(--radius-lg);
+      transition: border-color .2s, transform .2s;
+      background: white;
+    }
+
+    .service-card:hover {
+      border-color: var(--mist);
+      transform: translateY(-3px);
+    }
+
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      background: #E1F5EE;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 { margin-bottom: 10px; }
+    .service-card p { font-size: 15px; }
+
+    /* PORTFOLIO PREVIEW */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .portfolio-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--bark5);
+      text-decoration: none;
+      transition: transform .25s, border-color .25s;
+      display: block;
+    }
+
+    .portfolio-card:hover { transform: translateY(-4px); border-color: var(--mist); }
+
+    .portfolio-thumb {
+      aspect-ratio: 16/10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-family: var(--font-mono);
+      color: var(--bark3);
+      letter-spacing: .06em;
+    }
+
+    .portfolio-meta {
+      padding: 20px 24px;
+      background: white;
+    }
+
+    .portfolio-meta h3 { margin-bottom: 6px; }
+    .portfolio-meta p { font-size: 14px; color: var(--bark3); }
+
+    /* CTA BAND */
+    .cta-band {
+      background: var(--bark);
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .cta-band h2 { color: white; margin-bottom: 16px; }
+    .cta-band p { color: var(--bark3); font-size: 18px; margin-bottom: 36px; font-weight: 300; }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-mark { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .hero { padding: 60px 20px; }
+      .logos-bar { padding: 24px 20px; }
+      .cta-band { padding: 64px 20px; }
+    }
+  </style>
+</head>
+<body class="page">
+<script src="layout.js"></script>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <span class="eyebrow fade-up">Web design &amp; development</span>
+      <h1 class="fade-up">Where ideas<br><em>take root</em><br>online.</h1>
+      <p class="fade-up">Pixel-perfect websites for businesses serious about growing online — built fast, designed to last.</p>
+      <div class="hero-btns fade-up">
+        <a href="portfolio.html" class="btn btn-dark">View our work</a>
+        <a href="contact.html" class="btn btn-outline">Start a project</a>
+      </div>
+    </div>
+    <div class="hero-mark fade-up">
+      <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <!-- Large dissolve mark -->
+        <rect x="20"  y="20"  width="72" height="72" rx="12" fill="#1D9E75"/>
+        <rect x="108" y="20"  width="72" height="72" rx="12" fill="#1D9E75"/>
+        <rect x="196" y="20"  width="72" height="72" rx="12" fill="#1D9E75"/>
+        <rect x="20"  y="108" width="72" height="72" rx="12" fill="#1D9E75"/>
+        <rect x="108" y="108" width="72" height="72" rx="12" fill="#1D9E75"/>
+        <rect x="196" y="108" width="72" height="72" rx="36" fill="#5DCAA5"/>
+        <rect x="20"  y="196" width="72" height="72" rx="36" fill="#5DCAA5"/>
+        <circle cx="144" cy="232" r="36" fill="#9FE1CB"/>
+        <circle cx="232" cy="232" r="26" fill="#9FE1CB" opacity="0.7"/>
+        <circle cx="286" cy="144" r="18" fill="#1D9E75" opacity="0.35"/>
+        <circle cx="292" cy="208" r="13" fill="#5DCAA5" opacity="0.4"/>
+        <circle cx="278" cy="272" r="9"  fill="#9FE1CB" opacity="0.3"/>
+        <circle cx="240" cy="290" r="6"  fill="#1D9E75" opacity="0.25"/>
+        <circle cx="196" cy="300" r="4"  fill="#5DCAA5" opacity="0.2"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS BAR -->
+<div class="logos-bar">
+  <div class="logos-inner">
+    <p>Built with</p>
+    <span class="logo-pill">HTML &amp; CSS</span>
+    <span class="logo-pill">React</span>
+    <span class="logo-pill">Next.js</span>
+    <span class="logo-pill">Tailwind</span>
+    <span class="logo-pill">Shopify</span>
+    <span class="logo-pill">WordPress</span>
+    <span class="logo-pill">Webflow</span>
+  </div>
+</div>
+
+<!-- SERVICES PREVIEW -->
+<section class="section" style="background: var(--bark5);">
+  <div class="container">
+    <span class="eyebrow">What we do</span>
+    <h2>Everything your<br>website needs.</h2>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2" stroke-linecap="round">
+            <rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18"/>
+          </svg>
+        </div>
+        <h3>Website Design</h3>
+        <p>Custom designs built around your brand — not generic templates. Clean, fast, and made to convert.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2" stroke-linecap="round">
+            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <h3>Development</h3>
+        <p>Hand-coded or CMS-powered — your choice. Fast loading, mobile-first, and built for the long term.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2" stroke-linecap="round">
+            <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+          </svg>
+        </div>
+        <h3>Ongoing Support</h3>
+        <p>Updates, fixes, and improvements whenever you need them. Your site stays fresh and running smoothly.</p>
+      </div>
+    </div>
+    <div style="margin-top:40px;">
+      <a href="services.html" class="btn btn-outline">See all services →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO PREVIEW -->
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">Selected work</span>
+    <h2>Recent projects.</h2>
+    <div class="portfolio-grid">
+      <a href="portfolio.html" class="portfolio-card fade-up">
+        <div class="portfolio-thumb" style="background: linear-gradient(135deg,#E1F5EE,#9FE1CB);">
+          <span>Coming soon</span>
+        </div>
+        <div class="portfolio-meta">
+          <h3>Your project here</h3>
+          <p>Be the first Pixlgrove client</p>
+        </div>
+      </a>
+      <a href="portfolio.html" class="portfolio-card fade-up">
+        <div class="portfolio-thumb" style="background: linear-gradient(135deg,#F1EFE8,#D3D1C7);">
+          <span>Coming soon</span>
+        </div>
+        <div class="portfolio-meta">
+          <h3>Your project here</h3>
+          <p>Be the first Pixlgrove client</p>
+        </div>
+      </a>
+    </div>
+    <div style="margin-top:40px;">
+      <a href="portfolio.html" class="btn btn-outline">View all work →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="container">
+    <h2>Ready to grow online?</h2>
+    <p>Tell us about your project — we'll get back within 24 hours.</p>
+    <a href="contact.html" class="btn btn-primary">Start a conversation →</a>
+  </div>
+</div>
+
+</body>
+</html>

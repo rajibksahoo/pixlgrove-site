@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Pixlgrove</title>
+  <meta name="description" content="Start a project with Pixlgrove — web design and development studio."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><rect x='8' y='8' width='28' height='28' rx='5' fill='%231D9E75'/><rect x='44' y='8' width='28' height='28' rx='5' fill='%231D9E75'/><rect x='80' y='8' width='28' height='28' rx='5' fill='%231D9E75'/><rect x='8' y='44' width='28' height='28' rx='5' fill='%231D9E75'/><rect x='44' y='44' width='28' height='28' rx='5' fill='%231D9E75'/><rect x='80' y='44' width='28' height='28' rx='14' fill='%235DCAA5'/><rect x='8' y='80' width='28' height='28' rx='14' fill='%235DCAA5'/><circle cx='58' cy='94' r='14' fill='%239FE1CB'/></svg>"/>
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: flex-start;
+    }
+
+    .contact-info h1 { margin-bottom: 20px; }
+    .contact-info > p { font-size: 17px; font-weight: 300; margin-bottom: 48px; }
+
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin-bottom: 48px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .contact-item-icon {
+      width: 40px;
+      height: 40px;
+      background: #E1F5EE;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-item-text strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--bark3);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-family: var(--font-mono);
+      margin-bottom: 4px;
+    }
+
+    .contact-item-text a,
+    .contact-item-text p {
+      font-size: 16px;
+      color: var(--bark);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .contact-item-text a:hover { color: var(--grove); }
+
+    .trust-items {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--bark2);
+    }
+
+    .trust-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--grove);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* FORM CARD */
+    .form-card {
+      background: white;
+      border: 1px solid var(--bark5);
+      border-radius: var(--radius-lg);
+      padding: 48px 44px;
+      box-shadow: 0 4px 32px rgba(0,0,0,.05);
+    }
+
+    .form-card h2 { margin-bottom: 8px; font-size: 26px; }
+    .form-card > p { font-size: 15px; color: var(--bark3); margin-bottom: 32px; }
+
+    .form-group { margin-bottom: 20px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--bark2);
+      margin-bottom: 7px;
+      letter-spacing: .02em;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--bark4);
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      color: var(--bark);
+      background: white;
+      transition: border-color .2s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--grove);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+      line-height: 1.6;
+    }
+
+    select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888780' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    .form-submit {
+      margin-top: 8px;
+      width: 100%;
+      justify-content: center;
+      font-size: 16px;
+      padding: 16px;
+    }
+
+    .form-note {
+      text-align: center;
+      font-size: 13px;
+      color: var(--bark3);
+      margin-top: 14px;
+    }
+
+    /* TALLY ALTERNATIVE NOTE */
+    .tally-note {
+      background: var(--bark5);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 13px;
+      color: var(--bark3);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.6;
+    }
+
+    .tally-note strong { color: var(--bark2); }
+
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 48px; }
+      .form-card { padding: 32px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="page">
+<script src="layout.js"></script>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- LEFT: Info -->
+      <div class="contact-info fade-up">
+        <span class="eyebrow">Get in touch</span>
+        <h1>Let's build<br>something great.</h1>
+        <p>Tell us what you need — we'll get back to you within 24 hours with a clear plan and honest pricing.</p>
+
+        <div class="contact-detail">
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2" stroke-linecap="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="contact-item-text">
+              <strong>Email</strong>
+              <a href="mailto:hello@pixlgrove.com">hello@pixlgrove.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="contact-item-text">
+              <strong>Response time</strong>
+              <p>Within 24 hours</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+              </svg>
+            </div>
+            <div class="contact-item-text">
+              <strong>Location</strong>
+              <p>Remote — serving clients worldwide</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="trust-items">
+          <div class="trust-item"><span class="trust-dot"></span>Free initial consultation</div>
+          <div class="trust-item"><span class="trust-dot"></span>No commitment required</div>
+          <div class="trust-item"><span class="trust-dot"></span>Fixed pricing, no hidden fees</div>
+          <div class="trust-item"><span class="trust-dot"></span>Money-back guarantee on starter projects</div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Form -->
+      <div class="form-card fade-up">
+        <h2>Start a project</h2>
+        <p>Fill in the details below and we'll be in touch shortly.</p>
+
+        <!-- 
+          TALLY INTEGRATION NOTE:
+          Replace this entire form with your Tally embed code.
+          1. Go to tally.so → Create form
+          2. Click Share → Embed → Copy iframe code
+          3. Replace the <form> block below with the iframe
+          
+          Example:
+          <iframe data-tally-src="https://tally.so/embed/YOUR_FORM_ID" ...></iframe>
+          <script src="https://tally.so/widgets/embed.js"></script>
+        -->
+
+        <div class="tally-note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888780" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span><strong>To activate this form:</strong> Create a free form at tally.so, then replace this form section with your Tally embed code.</span>
+        </div>
+
+        <form id="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your name</label>
+              <input type="text" id="name" placeholder="Jane Smith" required/>
+            </div>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" id="email" placeholder="jane@company.com" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="project-type">Project type</label>
+            <select id="project-type" required>
+              <option value="" disabled selected>Select a project type</option>
+              <option>New website</option>
+              <option>Redesign existing site</option>
+              <option>E-commerce store</option>
+              <option>Landing page</option>
+              <option>Ongoing support</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="budget">Budget range</label>
+            <select id="budget">
+              <option value="" disabled selected>Select a budget range</option>
+              <option>Under $500</option>
+              <option>$500 – $1,000</option>
+              <option>$1,000 – $3,000</option>
+              <option>$3,000 – $5,000</option>
+              <option>$5,000+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell us about your project</label>
+            <textarea id="message" placeholder="What are you building? Who is it for? What problem does it solve?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Send message →</button>
+          <p class="form-note">We reply within 24 hours. No spam, ever.</p>
+        </form>
+
+        <div id="form-success" style="display:none; text-align:center; padding:48px 0;">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto 20px">
+            <circle cx="28" cy="28" r="28" fill="#E1F5EE"/>
+            <path d="M16 28l8 8 16-16" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3 style="margin-bottom:8px;">Message sent!</h3>
+          <p>Thanks for reaching out. We'll be in touch within 24 hours.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('contact-form').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+</script>
+
+</body>
+</html>
