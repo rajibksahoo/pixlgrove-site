@@ -1,0 +1,11 @@
+[build]
+  # Static site, no bundler. This one line stamps the deployed git commit
+  # into version.json at deploy time using Netlify's built-in env vars.
+  publish = "."
+  command = "printf '{\"commit\":\"%s\",\"branch\":\"%s\",\"deployId\":\"%s\",\"deployed\":\"%s\"}\\n' \"$COMMIT_REF\" \"$BRANCH\" \"$DEPLOY_ID\" \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\" > version.json"
+
+# Always serve the freshest version.json so it reflects the live deploy.
+[[headers]]
+  for = "/version.json"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
