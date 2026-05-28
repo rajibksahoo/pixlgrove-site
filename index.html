@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pixlgrove — Web Design &amp; Development Studio</title>
-  <meta name="description" content="Pixel-perfect websites built to grow your business. Web design and development studio serving clients worldwide — from $499."/>
+  <meta name="description" content="Pixel-perfect websites built to grow your business. Web design and development studio serving clients worldwide."/>
   <link rel="canonical" href="https://pixlgrove.com/"/>
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
   <meta name="theme-color" content="#1D9E75"/>
@@ -21,7 +21,7 @@
 
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Pixlgrove — Web Design &amp; Development Studio"/>
-  <meta name="twitter:description" content="Pixel-perfect websites built to grow your business, from $499."/>
+  <meta name="twitter:description" content="Pixel-perfect websites built to grow your business."/>
   <meta name="twitter:image" content="https://pixlgrove.com/og-image.png"/>
 
   <script type="application/ld+json">
@@ -37,14 +37,8 @@
         "email": "hello@pixlgrove.com",
         "logo": "https://pixlgrove.com/og-image.png",
         "image": "https://pixlgrove.com/og-image.png",
-        "priceRange": "$$",
         "areaServed": "Worldwide",
-        "knowsAbout": ["Web design", "Web development", "E-commerce", "SEO", "Website maintenance"],
-        "makesOffer": [
-          { "@type": "Offer", "name": "Starter website", "price": "499", "priceCurrency": "USD" },
-          { "@type": "Offer", "name": "Growth website", "price": "999", "priceCurrency": "USD" },
-          { "@type": "Offer", "name": "Custom website" }
-        ]
+        "knowsAbout": ["Web design", "Web development", "E-commerce", "SEO", "Website maintenance"]
       },
       {
         "@type": "WebSite",
@@ -133,41 +127,59 @@
       50% { transform: translateY(-12px); }
     }
 
-    /* LOGOS BAR */
+    /* LOGOS MARQUEE */
     .logos-bar {
-      background: var(--bark5);
-      padding: 28px 40px;
-      border-top: 1px solid var(--bark4);
-      border-bottom: 1px solid var(--bark4);
+      background: var(--bark);
+      padding: 36px 0 40px;
+      border-top: 1px solid var(--bark2);
+      border-bottom: 1px solid var(--bark2);
+      overflow: hidden;
+      position: relative;
     }
 
-    .logos-inner {
+    .logos-label {
       max-width: var(--max);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .logos-inner p {
+      margin: 0 auto 20px;
+      padding: 0 40px;
       font-size: 12px;
       font-family: var(--font-mono);
-      letter-spacing: .1em;
+      letter-spacing: .15em;
       text-transform: uppercase;
       color: var(--bark3);
-      flex-shrink: 0;
-      margin-right: 8px;
+    }
+
+    .logos-track {
+      position: relative;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 80px, #000 calc(100% - 80px), transparent 100%);
+              mask-image: linear-gradient(90deg, transparent 0, #000 80px, #000 calc(100% - 80px), transparent 100%);
+    }
+
+    .logos-marquee {
+      display: flex;
+      gap: 14px;
+      width: max-content;
+      animation: marquee 32s linear infinite;
+    }
+
+    .logos-marquee:hover { animation-play-state: paused; }
+
+    @keyframes marquee {
+      from { transform: translateX(-50%); }
+      to   { transform: translateX(0); }
     }
 
     .logo-pill {
       font-size: 13px;
       font-weight: 500;
-      color: var(--bark2);
-      padding: 6px 14px;
-      background: white;
-      border: 1px solid var(--bark4);
-      border-radius: 20px;
+      color: white;
+      padding: 8px 18px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      letter-spacing: -0.1px;
     }
 
     /* SERVICES PREVIEW */
@@ -357,17 +369,31 @@
   </div>
 </section>
 
-<!-- LOGOS BAR -->
+<!-- LOGOS MARQUEE -->
 <div class="logos-bar">
-  <div class="logos-inner">
-    <p>Built with</p>
-    <span class="logo-pill">HTML &amp; CSS</span>
-    <span class="logo-pill">React</span>
-    <span class="logo-pill">Next.js</span>
-    <span class="logo-pill">Tailwind</span>
-    <span class="logo-pill">Shopify</span>
-    <span class="logo-pill">WordPress</span>
-    <span class="logo-pill">Webflow</span>
+  <p class="logos-label">We work with</p>
+  <div class="logos-track">
+    <div class="logos-marquee" aria-hidden="true">
+      <span class="logo-pill">HTML &amp; CSS</span>
+      <span class="logo-pill">React</span>
+      <span class="logo-pill">Next.js</span>
+      <span class="logo-pill">Tailwind</span>
+      <span class="logo-pill">Shopify</span>
+      <span class="logo-pill">WordPress</span>
+      <span class="logo-pill">Webflow</span>
+      <span class="logo-pill">Figma</span>
+      <span class="logo-pill">Framer</span>
+      <!-- duplicate for seamless infinite loop -->
+      <span class="logo-pill">HTML &amp; CSS</span>
+      <span class="logo-pill">React</span>
+      <span class="logo-pill">Next.js</span>
+      <span class="logo-pill">Tailwind</span>
+      <span class="logo-pill">Shopify</span>
+      <span class="logo-pill">WordPress</span>
+      <span class="logo-pill">Webflow</span>
+      <span class="logo-pill">Figma</span>
+      <span class="logo-pill">Framer</span>
+    </div>
   </div>
 </div>
 

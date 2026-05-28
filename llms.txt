@@ -1,6 +1,6 @@
 # Pixlgrove
 
-> Pixlgrove is a web design and development studio that builds pixel-perfect, fast, conversion-focused websites for businesses worldwide. Work is delivered in days to a few weeks, with transparent one-time pricing.
+> Pixlgrove is a web design and development studio that builds pixel-perfect, fast, conversion-focused websites for businesses worldwide. Work is delivered in days to a few weeks. Every project is quoted individually based on scope.
 
 ## What we do
 
@@ -10,9 +10,7 @@
 
 ## Pricing
 
-- **Starter — $499 (one-time):** 1–3 page website, mobile responsive, contact form, basic SEO, delivered in 5–7 days.
-- **Growth — $999 (one-time):** 5–8 page custom website, CMS integration, lead capture, SEO optimised, delivered in 10–14 days.
-- **Custom:** unlimited pages, e-commerce/Shopify, custom integrations, ongoing support, dedicated project manager.
+- Pricing is quoted per project based on scope. Get in touch and we'll send a tailored, no-obligation quote — usually within 24 hours.
 
 ## Contact
 
@@ -22,6 +20,6 @@
 ## Pages
 
 - Home: https://pixlgrove.com/
-- Services & pricing: https://pixlgrove.com/services.html
+- Services: https://pixlgrove.com/services.html
 - Portfolio: https://pixlgrove.com/portfolio.html
 - Contact: https://pixlgrove.com/contact.html
