@@ -41,4 +41,12 @@ Opening `file://` works for a quick look, but use a server to verify relative li
 
 - Each page's `<head>` carries: a unique `<title>` and meta description, `<link rel="canonical">` (absolute, base `https://pixlgrove.com/`), `robots`, `theme-color`, Open Graph + Twitter Card tags, and a JSON-LD `<script type="application/ld+json">` block. Home declares `ProfessionalService` + `WebSite`; services declares `Service` with an `OfferCatalog` mirroring the pricing tiers; portfolio/contact declare `BreadcrumbList` (contact also `ContactPage`). **If you change pricing, services, or the email, update the matching JSON-LD** so structured data stays truthful.
 - `robots.txt`, `sitemap.xml`, and `llms.txt` live at the site root. New pages must be added to `sitemap.xml`, and significant content/pricing changes should be reflected in `llms.txt` (the plain-text summary AI engines read).
-- Social/share image is referenced as `og-image.png` (absolute URL). The source art is `og-image.svg` — export it to a 1200×630 `og-image.png` for full compatibility (Facebook/Twitter/LinkedIn don't render SVG OG images).
+- Social/share image is `og-image.png` (1200×630, absolute URL), rasterised from the source art `og-image.svg`. If you edit the SVG, re-export the PNG — Facebook/Twitter/LinkedIn don't render SVG OG images:
+
+  ```bash
+  chrome --headless --window-size=1200,630 --screenshot=og-image.png <html wrapping og-image.svg>
+  ```
+
+- **Analytics & verification.** The GA4 tag (`G-X0YCFCK2R0`) is inlined at the end of every page's `<head>`, including `404.html`. Search-engine ownership verification (`google-site-verification`, `msvalidate.01`, `yandex-verification`) lives on **`index.html` only** — one tag on the root verifies the whole property; don't duplicate it across pages.
+- **Geo + Dublin Core meta** sit on every page after `<meta name="author">`. Geo targets Bhubaneswar, Odisha (`20.296059; 85.824539` — the vendor-supplied coordinates were the centre of India and were wrong). `DC.title`/`DC.description` mirror each page's own `<title>` and meta description — keep them in sync when you change either.
+- Positioning is deliberately **web design & development studio, worldwide**. An SEO vendor deliverable proposed repositioning to "affordable SEO agency & Meta Ads company in Bhubaneswar"; that was declined. Don't let local-SEO keyword sheets overwrite titles/descriptions/JSON-LD.
